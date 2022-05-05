@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
@@ -30,9 +32,13 @@ public class Professor {
 	private int idPr;
 	
 	@Column(name = "Name")
+	@Size(min = 3, max = 30)	
+	@Pattern(regexp="[A-Z]{1}[a-z]+", message="Must be first capital letter and others small")
 	private String name;
 	
 	@Column(name = "Surname")
+	@Size(min = 3, max = 30)	
+	@Pattern(regexp="[A-Z]{1}[a-z]+", message="Must be first capital letter and others small")
 	private String surname;
 	
 	@Column(name = "Degree")
