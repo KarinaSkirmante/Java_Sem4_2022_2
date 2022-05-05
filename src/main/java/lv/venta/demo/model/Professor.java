@@ -1,10 +1,15 @@
 package lv.venta.demo.model;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -44,6 +49,30 @@ public class Professor {
 	@Column(name = "Degree")
 	private ProfDegree degree;
 
+	//1.vienam profesoram ir tikai viens kurss
+	/*
+	//viens-pret-viens
+	//mappedBy uz mainigo no otras klases
+	@OneToOne(mappedBy="professor")
+	@ToString.Exclude
+	private Course course;
+	*/
+	
+	
+	//2.vienam profesoram ir vairāki kurss
+	/*
+	//viens-pret-daudziem
+	@OneToMany(mappedBy="professor")
+	private Collection<Course> courses;
+	*/
+	
+	//3. vienam profesoram ir vairāki kursi
+	//daudzi-pret-daudziem
+	@ManyToMany(mappedBy="professors")
+	private Collection<Course> courses;
+
+	
+	
 	
 	//2. get un set no lombok
 	//3.1. bezargumenta konstruktors - lombok
