@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -35,8 +37,28 @@ public class Grade {
         @Column(name = "Value")
         private int value;
         
+        @ManyToOne
+        @JoinColumn(name="IdSt")
         private Student student;
         
+        
+        
+        
+        @ManyToOne
+        @JoinColumn(name="IdCo")
         private Course course;
+
+
+
+
+		public Grade(@Min(0) @Max(10) int value, Student student, Course course) {
+			super();
+			this.value = value;
+			this.student = student;
+			this.course = course;
+		}
+        
+        
+        
 }
 

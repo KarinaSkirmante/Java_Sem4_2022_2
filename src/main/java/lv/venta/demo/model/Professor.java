@@ -50,13 +50,15 @@ public class Professor {
 	private ProfDegree degree;
 
 	//1.vienam profesoram ir tikai viens kurss
-	/*
+	
 	//viens-pret-viens
 	//mappedBy uz mainigo no otras klases
 	@OneToOne(mappedBy="professor")
 	@ToString.Exclude
 	private Course course;
-	*/
+
+	
+	
 	
 	
 	//2.vienam profesoram ir vairāki kurss
@@ -66,11 +68,11 @@ public class Professor {
 	private Collection<Course> courses;
 	*/
 	
-	//3. vienam profesoram ir vairāki kursi
+	/*//3. vienam profesoram ir vairāki kursi
 	//daudzi-pret-daudziem
 	@ManyToMany(mappedBy="professors")
 	private Collection<Course> courses;
-
+*/
 	
 	
 	
@@ -78,6 +80,7 @@ public class Professor {
 	//3.1. bezargumenta konstruktors - lombok
 	//3.2. argumenta konstruktors
 	public Professor(String name, String surname, ProfDegree degree) {
+		super();
 		this.name = name;
 		this.surname = surname;
 		this.degree = degree;
