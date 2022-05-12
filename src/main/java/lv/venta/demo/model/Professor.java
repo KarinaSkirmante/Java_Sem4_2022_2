@@ -1,5 +1,6 @@
 package lv.venta.demo.model;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Column;
@@ -7,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
@@ -49,14 +52,21 @@ public class Professor {
 	@Column(name = "Degree")
 	private ProfDegree degree;
 
-	//1.vienam profesoram ir tikai viens kurss
 	
-	//viens-pret-viens
-	//mappedBy uz mainigo no otras klases
-	@OneToOne(mappedBy="professor")
-	@ToString.Exclude
-	private Course course;
-
+	
+	
+	
+	
+	
+	@ManyToMany
+	@JoinTable(joinColumns=@JoinColumn(name="IdPr"),
+	inverseJoinColumns=@JoinColumn(name="IdCo"))
+	private Collection<Course> courses = new ArrayList<Course>();
+	
+	public void addNewCourse(Course course)
+	{
+		courses.add(course);
+	}
 	
 	
 	

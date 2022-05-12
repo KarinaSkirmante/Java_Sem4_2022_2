@@ -50,13 +50,11 @@ public class Course {
 		private int cp;
 		
 		
-		//1. vienam kursam ir tikai viens pasniedzejs
 		
-		//viens-pret-viens
-		@OneToOne
-		//joinColumn uz otrāš klases id kolonu
-		@JoinColumn(name="IdPr")
-		private Professor professor;
+		@ManyToMany(mappedBy="courses")
+		private Collection<Professor> professors;
+		
+		
 		
 		
 		@OneToMany(mappedBy="course")
@@ -65,11 +63,11 @@ public class Course {
 
 
 		public Course(@Size(min = 3, max = 60) @Pattern(regexp = "[A-Z]{1}[a-z\\s]+") String title,
-				@Min(0) @Max(25) int cp, Professor professor) {
+				@Min(0) @Max(25) int cp, Collection<Professor> professors) {
 			super();
 			this.title = title;
 			this.cp = cp;
-			this.professor = professor;
+			this.professors = professors;
 		}
 		
 		

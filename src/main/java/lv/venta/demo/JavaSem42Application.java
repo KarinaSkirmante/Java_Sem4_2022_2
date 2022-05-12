@@ -1,5 +1,8 @@
 package lv.venta.demo;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -46,12 +49,24 @@ public class JavaSem42Application {
 		        studRepo.save(st2);
 		        studRepo.save(st3);
 
-		        Course co1 = new Course("Java", 2, pr1);
-		        Course co2 = new Course("Data str", 4, pr2);
-		        Course co3 = new Course("Matematika", 1, pr3);
+		        Course co1 = new Course("Java", 2, Arrays.asList(pr1, pr2));
+		        Course co2 = new Course("Data str", 4, Arrays.asList(pr2));
+		        Course co3 = new Course("Matematika", 1, Arrays.asList(pr1, pr2, pr3));
 		        courRepo.save(co1);
 		        courRepo.save(co2);
 		        courRepo.save(co3);
+		        pr1.addNewCourse(co1);
+		        pr1.addNewCourse(co3);
+		        profRepo.save(pr1);
+		        
+		        pr2.addNewCourse(co1);
+		        pr2.addNewCourse(co2);
+		        pr2.addNewCourse(co3);
+		        profRepo.save(pr2);
+		        
+		        pr3.addNewCourse(co3);
+		        profRepo.save(pr3);
+		        
 
 		      
 		        Grade gr3 = new Grade(3, st3, co1);//3 Tresais Kurss
