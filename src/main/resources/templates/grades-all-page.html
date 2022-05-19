@@ -1,13 +1,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 	<body>
-	<p>Informācijia par produktiem--></p>
+	<p>Informācija par atzīmēm--></p>
 	<table> 
-		 <tr th:each="prod : ${package}">
-		 	<td th:text="${prod.getId()}"> </td>
-			<td th:text="${prod.getTitle()}"> </td>
-			<td th:text="${prod.getPrice()}"> </td>
-			<td th:text="${prod.getQuantity()}"> </td>
+		 <tr th:each="temp : ${package}">
+		 	<td th:text="${temp.getValue()}"> </td>
+			<td th:text="${temp.getStudent().getName()}"> </td>
+			<td th:text="${temp.getStudent().getSurname()}"> </td>
+			<td th:text="${temp.getCourse().getTitle()}"> </td>
 		</tr>
 	
 	</table>

@@ -29,6 +29,7 @@ public class GradeFilterController {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			model.addAttribute("errorMsg",e.getMessage());
 			return "error-page";
 		}
 		
