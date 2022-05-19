@@ -90,5 +90,26 @@ public class FilteringGradeServiceImpl implements IFilteringGradeService{
 		else
 			throw new Exception("Nav atbilstošs id");
 	}
+	
+	/*
+	public void deleteStudentId(int id)
+	{
+		ArrayList<Grade> grades = gradeRepo.findByStudentIdSt(id);
+		for(Grade temp:grades)
+		{
+			temp.setStudent(null);//no grades tabulas noņemu id_st
+			gradeRepo.save(temp);
+		}
+		studRepo.deleteById(id);
+		
+	}
+	*/
+	
+	
+	
+	
+	
+	
+	
 
 }
